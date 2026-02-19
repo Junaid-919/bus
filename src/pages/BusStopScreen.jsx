@@ -22,8 +22,9 @@ function BusStopScreen() {
             `https://backend-vercel-zeta-eight.vercel.app/api/busstops/number/${bus_stop_number}/`
           );
 
-        console.log("data - "+ response)
-        console.log("data - "+JSON.stringify(response.json()))
+        console.log("data1 - "+ response)
+        console.log("data2 - "+ JSON.stringify(response))
+        console.log("data3 - "+JSON.stringify(response.json()))
 
           const data = await response.json();
           setBusStop(data);
