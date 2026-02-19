@@ -8,13 +8,11 @@ function BusStopScreen() {
   const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
-    console.log("the bus stop number")
-    console.log("is = "+JSON.stringify(bus_stop_number))
     try {
       setLoading(true);
 
       const response = await fetch(
-        `${process.env.VITE_API_URL}/api/busstops/number/${bus_stop_number}/`
+        `https://backend-vercel-zeta-eight.vercel.app/api/busstops/number/${bus_stop_number}/`
       );
 
       const data = await response.json();
