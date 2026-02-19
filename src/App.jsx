@@ -5,7 +5,7 @@ function App() {
   return (
     <Routes>
       <Route
-        path="/:bus_stop_number"
+        path="/bus/:bus_stop_number"
         element={<BusStopScreen />}
       />
     </Routes>
