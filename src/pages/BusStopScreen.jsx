@@ -27,11 +27,11 @@ function BusStopScreen() {
           const data = await response.json();   // ✅ await here
           console.log("data:", data);   
 
-        console.log("data1 - "+ response)
-        console.log("data2 - "+ JSON.stringify(response))
-        console.log("data3 - "+JSON.stringify(response.json()))
+        // console.log("data1 - "+ response)
+        // console.log("data2 - "+ JSON.stringify(response))
+        // console.log("data3 - "+JSON.stringify(response.json()))
 
-          const data = await response.json();
+          // const data = await response.json();
           setBusStop(data);
         } catch (error) {
           console.error("Error fetching data:", error);
