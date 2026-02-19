@@ -19,7 +19,7 @@ function BusStopScreen() {
           setLoading(true);
 
           const response = await axios.get(
-            `http://127.0.0.1/api/busstops/number/${bus_stop_number}/`
+            `https://backend-vercel-zeta-eight.vercel.app/api/busstops/number/${bus_stop_number}/`
           );
 
           const data = await response.json();
