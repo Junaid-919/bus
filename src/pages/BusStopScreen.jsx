@@ -46,6 +46,7 @@ function BusStopScreen() {
   return (
     <div style={{ padding: "20px" }}>
       <h2>Bus Stop Details</h2>
+      {console.log("bus data in logs = "+JSON.stringify(busStop))}
 
       <p><strong>Bus Stop Number:</strong> {busStop?.busstop.bus_stop_number}</p>
       <p><strong>Bus Stop Name:</strong> {busStop?.busstop.bus_stop_name}</p>
