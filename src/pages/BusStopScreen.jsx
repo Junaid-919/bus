@@ -7,7 +7,9 @@ function BusStopScreen() {
   const [busStop, setBusStop] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchData = async () => {
+  const fetchData = async () => {\
+    console.log("the bus stop number")
+    console.log("is = "+JSON.stringify(bus_stop_number))
     try {
       setLoading(true);
 
