@@ -57,7 +57,14 @@ function BusStopScreen() {
 
       <h3>Bus Services</h3>
 
-      <table border="1" cellPadding="10">
+       {loading ? (
+          <div className="flex flex-col items-center justify-center h-48 md:h-64">
+            <Spin size={isMobile ? "default" : "large"} />
+            <Text className="mt-2 md:mt-3 text-sm md:text-base">
+              Loading inspection data...
+            </Text>
+          </div>
+        ) : (<table border="1" cellPadding="10">
         <thead>
           <tr>
             <th>Service Number</th>
@@ -74,7 +81,7 @@ function BusStopScreen() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table>)}
     </div>
   );
 }
