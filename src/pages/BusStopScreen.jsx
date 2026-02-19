@@ -48,15 +48,7 @@ function BusStopScreen() {
       <h2>Bus Stop Details</h2>
       {console.log("bus data in logs = "+JSON.stringify(busStop))}
 
-       /* {loading ? (
-          <div className="flex flex-col items-center justify-center h-48 md:h-64">
-            <Spin size={isMobile ? "default" : "large"} />
-            <Text className="mt-2 md:mt-3 text-sm md:text-base">
-              Loading inspection data...
-            </Text>
-          </div>
-        ) : (<p><strong>Bus Stop Number:</strong> {busStop?.busstop.bus_stop_number}</p>
-      <p><strong>Bus Stop Name:</strong> {busStop?.busstop.bus_stop_name}</p>)} */
+
 
       <button onClick={fetchData} style={{ marginBottom: "20px" }}>
         Refresh
