@@ -47,8 +47,8 @@ function BusStopScreen() {
     <div style={{ padding: "20px" }}>
       <h2>Bus Stop Details</h2>
 
-      <p><strong>Bus Stop Number:</strong> {busStop.bus_stop_number}</p>
-      <p><strong>Bus Stop Name:</strong> {busStop.bus_stop_name}</p>
+      <p><strong>Bus Stop Number:</strong> {busStop?.busstop.bus_stop_number}</p>
+      <p><strong>Bus Stop Name:</strong> {busStop?.busstop.bus_stop_name}</p>
 
       <button onClick={fetchData} style={{ marginBottom: "20px" }}>
         Refresh
@@ -65,7 +65,7 @@ function BusStopScreen() {
           </tr>
         </thead>
         <tbody>
-          {busStop.bussservice?.map((service) => (
+          {busStop?.map((service) => (
             <tr key={service.id}>
               <td>{service.service_number}</td>
               <td>{service.arrival_time}</td>
