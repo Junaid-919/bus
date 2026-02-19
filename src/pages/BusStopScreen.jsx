@@ -19,8 +19,13 @@ function BusStopScreen() {
           setLoading(true);
 
           const response = await fetch(
-            `https://backend-vercel-zeta-eight.vercel.app/api/busstops/number/${bus_stop_number}/`
+            `https://backend-vercel-zeta-eight.vercel.app/api/busstops/number/${bus_stop_number}`
           );
+
+
+          console.log("status:", response.status);
+          const data = await response.json();   // ✅ await here
+          console.log("data:", data);   
 
         console.log("data1 - "+ response)
         console.log("data2 - "+ JSON.stringify(response))
