@@ -1,31 +1,39 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+
 
 function BusStopScreen() {
-  const { bus_stop_number } = useParams();
+  const [searchParams] = useSearchParams();
+  const bus_stop_number = searchParams.get("bus_stop_number");
 
-  const [busStop, setBusStop] = useState(null);
+  const [busStop, setBusStop] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
 
-      const response = await fetch(
-        `https://backend-vercel-zeta-eight.vercel.app/api/busstops/number/${bus_stop_number}/`
-      );
+      const fetchData = async () => {
+      try {
 
-      const data = await response.json();
-      setBusStop(data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+          console.log("bus")
+          setLoading(true);
+
+          const response = await axios.get(
+            `http://127.0.0.1/api/busstops/number/${bus_stop_number}/`
+          );
+
+          const data = await response.json();
+          setBusStop(response.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
   useEffect(() => {
     fetchData();
+
   }, [bus_stop_number]);
 
   if (loading) return <h3>Loading...</h3>;
