@@ -57,71 +57,139 @@ function BusStopScreen() {
       <h3>Bus Services</h3>
 
 {loading ? (
-  <div className="flex flex-col items-center justify-center h-48 md:h-64">
+  <div className="loader-container">
     <Spin size={isMobile ? "default" : "large"} />
-    <Text className="mt-2 md:mt-3 text-sm md:text-base text-blue-600 font-medium">
-      Loading inspection data...
-    </Text>
+    <p className="loading-text">Loading inspection data...</p>
   </div>
 ) : (
-  <div className="w-full overflow-x-auto mt-6">
-    <div className="rounded-xl shadow-lg border border-blue-100 overflow-hidden">
-      <table className="min-w-full">
-        
-        {/* Table Header */}
-        <thead className="bg-gradient-to-r from-blue-600 to-indigo-600">
-          <tr>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-white">
-              Service Number
-            </th>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-white">
-              Arrival Time
-            </th>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-white">
-              Next Arrival Time
-            </th>
-          </tr>
-        </thead>
+  <div className="table-wrapper">
+    <table className="bus-table">
+      <thead>
+        <tr>
+          <th>Service Number</th>
+          <th>Arrival Time</th>
+          <th>Next Arrival Time</th>
+        </tr>
+      </thead>
 
-        {/* Table Body */}
-        <tbody>
-          {busStop && busStop.length > 0 ? (
-            busStop.map((service, index) => (
-              <tr
-                key={service.id}
-                className={`transition duration-200 hover:bg-blue-50 ${
-                  index % 2 === 0 ? "bg-white" : "bg-blue-50/40"
-                }`}
-              >
-                <td className="px-6 py-4 text-sm font-medium text-blue-700">
-                  {service.service_number}
-                </td>
-                <td className="px-6 py-4 text-sm text-gray-700">
-                  {service.arrival_time}
-                </td>
-                <td className="px-6 py-4 text-sm text-gray-700">
-                  {service.next_arrival_time}
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td
-                colSpan="3"
-                className="text-center py-8 text-gray-500 text-sm bg-white"
-              >
-                No inspection data available.
+      <tbody>
+        {busStop && busStop.length > 0 ? (
+          busStop.map((service) => (
+            <tr key={service.id}>
+              <td className="service-number">
+                {service.service_number}
               </td>
+              <td>{service.arrival_time}</td>
+              <td>{service.next_arrival_time}</td>
             </tr>
-          )}
-        </tbody>
-
-      </table>
-    </div>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="3" className="no-data">
+              No inspection data available.
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
   </div>
 )}
+
+        <style>
+    .loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
+
+.loading-text {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* Wrapper for responsiveness */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+/* Main Table Styling */
+.bus-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.bus-table thead {
+  background: linear-gradient(to right, #2563eb, #4f46e5);
+  color: white;
+}
+
+.bus-table th {
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Body Cells */
+.bus-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Zebra Effect */
+.bus-table tbody tr:nth-child(even) {
+  background-color: #f9fbff;
+}
+
+/* Hover Effect */
+.bus-table tbody tr:hover {
+  background-color: #e8f0ff;
+  transition: 0.2s ease-in-out;
+}
+
+/* Highlight Service Number */
+.service-number {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* No Data */
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bus-table th,
+  .bus-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .loading-text {
+    font-size: 14px;
+  }
+}
+  </style>
     </div>
   );
 }
+
+
 
 export default BusStopScreen;
