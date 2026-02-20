@@ -60,14 +60,14 @@ function BusStopScreen() {
     <div className="busstop-row">
       <span className="label">Bus Stop Number:</span>
       <span className="value">
-        {busStop?.busstop?.bus_stop_number}
+        {busStop[0].busstop?.bus_stop_number}
       </span>
     </div>
 
     <div className="busstop-row">
       <span className="label">Bus Stop Name:</span>
       <span className="value">
-        {busStop?.busstop?.bus_stop_name}
+        {busStop[0].busstop?.bus_stop_name}
       </span>
     </div>
   </div>
