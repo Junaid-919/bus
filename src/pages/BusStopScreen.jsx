@@ -93,9 +93,8 @@ function BusStopScreen() {
       </tbody>
     </table>
   </div>
-)}
 
-        <style>
+          <style>
     .loader-container {
   display: flex;
   flex-direction: column;
@@ -186,8 +185,11 @@ function BusStopScreen() {
   }
 }
   </style>
-    </div>
+)}
+</div>
   );
+
+  
 }
 
 
