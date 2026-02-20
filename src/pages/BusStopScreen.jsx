@@ -48,7 +48,7 @@ function BusStopScreen() {
   return (
     <div style={{ padding: "20px" }}>
       <h2>Bus Stop Details</h2>
-      {console.log("bus data in logs = "+JSON.stringify(busStop))}
+      {console.log("bus data in logs = "+JSON.stringify(busStop[0]))}
 
       {loading ? (
   <div className="loader-container">
