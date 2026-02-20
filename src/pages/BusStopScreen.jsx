@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import "./bus.css";
+import "./busstop.css";
 
 
 function BusStopScreen() {
