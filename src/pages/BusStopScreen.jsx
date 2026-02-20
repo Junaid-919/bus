@@ -56,31 +56,62 @@ function BusStopScreen() {
 
       <h3>Bus Services</h3>
 
-       {loading ? (
-          <div className="flex flex-col items-center justify-center h-48 md:h-64">
-            <Spin size={isMobile ? "default" : "large"} />
-            <Text className="mt-2 md:mt-3 text-sm md:text-base">
-              Loading inspection data...
-            </Text>
-          </div>
-        ) : (<table border="1" cellPadding="10">
-        <thead>
-          <tr>
-            <th>Service Number</th>
-            <th>Arrival Time</th>
-            <th>Next Arrival Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {busStop?.map((service) => (
-            <tr key={service.id}>
-              <td>{service.service_number}</td>
-              <td>{service.arrival_time}</td>
-              <td>{service.next_arrival_time}</td>
+{loading ? (
+  <div className="flex flex-col items-center justify-center h-48 md:h-64">
+    <Spin size={isMobile ? "default" : "large"} />
+    <Text className="mt-2 md:mt-3 text-sm md:text-base text-gray-600">
+      Loading inspection data...
+    </Text>
+  </div>
+) : (
+  <div className="w-full overflow-x-auto mt-4">
+    <table className="min-w-full border border-gray-200 rounded-lg shadow-sm">
+      <thead className="bg-gray-100">
+        <tr>
+          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">
+            Service Number
+          </th>
+          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">
+            Arrival Time
+          </th>
+          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">
+            Next Arrival Time
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {busStop && busStop.length > 0 ? (
+          busStop.map((service) => (
+            <tr
+              key={service.id}
+              className="hover:bg-gray-50 transition duration-150"
+            >
+              <td className="px-4 py-3 text-sm text-gray-800 border-b">
+                {service.service_number}
+              </td>
+              <td className="px-4 py-3 text-sm text-gray-600 border-b">
+                {service.arrival_time}
+              </td>
+              <td className="px-4 py-3 text-sm text-gray-600 border-b">
+                {service.next_arrival_time}
+              </td>
             </tr>
-          ))}
-        </tbody>
-      </table>)}
+          ))
+        ) : (
+          <tr>
+            <td
+              colSpan="3"
+              className="text-center py-6 text-gray-500 text-sm"
+            >
+              No inspection data available.
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
+)}
     </div>
   );
 }
