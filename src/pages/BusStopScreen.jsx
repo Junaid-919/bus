@@ -50,30 +50,6 @@ function BusStopScreen() {
       <h2>Bus Stop Details</h2>
       {console.log("bus data in logs = "+JSON.stringify(busStop[0]))}
 
-      {loading ? (
-  <div className="loader-container">
-    <Spin size={isMobile ? "default" : "large"} />
-    <p className="loading-text">Loading inspection data...</p>
-  </div>
-) : (
-  <div className="busstop-card">
-    <div className="busstop-row">
-      <span className="label">Bus Stop Number:</span>
-      <span className="value">
-        {busStop[0].busstop?.bus_stop_number}
-      </span>
-    </div>
-
-    <div className="busstop-row">
-      <span className="label">Bus Stop Name:</span>
-      <span className="value">
-        {busStop[0].busstop?.bus_stop_name}
-      </span>
-    </div>
-  </div>
-)}
-
-
 
       <button onClick={fetchData} style={{ marginBottom: "20px" }}>
         Refresh
